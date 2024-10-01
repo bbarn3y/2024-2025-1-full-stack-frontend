@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {NzButtonModule} from "ng-zorro-antd/button";
+import {Router, RouterOutlet} from '@angular/router';
+import {NzButtonModule, NzButtonType} from "ng-zorro-antd/button";
 
 @Component({
   selector: 'app-root',
@@ -10,5 +10,14 @@ import {NzButtonModule} from "ng-zorro-antd/button";
   styleUrl: './app.component.less'
 })
 export class AppComponent {
+  buttonNzType: NzButtonType = 'dashed';
   title = '2024-2025-full-stack-frontend';
+
+  constructor(private router: Router) {
+  }
+
+  routeToLogin(event: MouseEvent) {
+    console.log('event', event);
+    this.router.navigateByUrl('/login');
+  }
 }

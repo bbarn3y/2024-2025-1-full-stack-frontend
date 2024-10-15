@@ -7,6 +7,10 @@ import {NzInputModule} from "ng-zorro-antd/input";
 import {NzButtonModule} from "ng-zorro-antd/button";
 import {NzCardModule} from "ng-zorro-antd/card";
 import {ReactiveFormsModule} from "@angular/forms";
+import { LockOutline, UserOutline } from '@ant-design/icons-angular/icons';
+import { IconDefinition } from '@ant-design/icons-angular';
+import {NzIconModule} from "ng-zorro-antd/icon";
+
 
 const routes: Routes = [
   {
@@ -15,10 +19,13 @@ const routes: Routes = [
   }
 ];
 
+const zorroIcons: IconDefinition[] = [LockOutline, UserOutline];
+
 const zorroModules = [
   NzButtonModule,
   NzCardModule,
   NzFormModule,
+  NzIconModule.forChild(zorroIcons),
   NzInputModule
 ];
 

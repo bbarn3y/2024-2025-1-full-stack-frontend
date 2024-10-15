@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ClientService} from "../_services/client.service";
+import {ConfigurationService} from "../_services/configuration.service";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private clientService: ClientService) {
     this.loginForm = this.fb.group({
       mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -18,7 +21,11 @@ export class LoginComponent {
   }
 
   submitForm() {
-
+    console.log('useHttp', ConfigurationService.config.useHttp);
+    // @todo continue!
+    this.clientService.login().subscribe((response) => {
+      console.log(response);
+    })
   }
 
 

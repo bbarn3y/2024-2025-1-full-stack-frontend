@@ -1,17 +1,18 @@
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {catchError, Observable, tap, throwError} from "rxjs";
+import {UserService} from "../_services/user.service";
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class SimpleHttpInterceptor implements HttpInterceptor {
 
-  // @todo Fails after injecting userService
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Modify the request
     const clonedRequest = req.clone({
       setHeaders: {
-        // @todo Use the real session
-        Authorization: `Bearer asdad`
+        Authorization: `Bearer ${this.userService.getToken()}`
       }
     })
 

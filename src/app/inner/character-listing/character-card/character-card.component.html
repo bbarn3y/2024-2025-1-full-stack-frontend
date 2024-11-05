@@ -1,0 +1,35 @@
+<nz-card *ngIf="character"
+         style="width: 240px"
+  [nzActions]="[selectActionTemplate, editActionTemplate, removeActionTemplate]"
+  [nzCover]="coverTemplate">
+
+  <nz-card-meta [nzTitle]="character.name"
+                [nzDescription]="descriptionTemplate"></nz-card-meta>
+
+</nz-card>
+
+<ng-template #coverTemplate>
+  <img [src]="character.image"/>
+</ng-template>
+
+<ng-template #descriptionTemplate>
+  <div>
+    {{ character.characterClass }}
+  </div>
+  <div>
+    {{ character.maxHp }}
+  </div>
+</ng-template>
+
+<ng-template #editActionTemplate>
+  <span nz-icon nzType="edit"></span>
+</ng-template>
+
+<ng-template #removeActionTemplate>
+  <span nz-icon nzType="delete"></span>
+</ng-template>
+
+<ng-template #selectActionTemplate>
+  <span nz-icon nzType="select"></span>
+</ng-template>
+

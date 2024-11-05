@@ -4,9 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
+  STORAGE_KEY = 'sessionToken';
   isLoggedIn: boolean = !!this.getToken();
-
-  STORAGE_KEY = 'sessionToken'
 
   constructor() { }
 
